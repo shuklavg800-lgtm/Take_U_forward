@@ -23,6 +23,36 @@ Node* convertArraytoLL(vector<int> & arr){
     return head;
 }
 
+int length_LL(Node* head){
+    Node* temp=head;
+    int length=0;
+    while(temp){
+        length++;
+        temp=temp->next;
+    }
+    return length;
+}
+
+Node* last_element(Node* head){
+    Node* curr=head;
+    while(curr->next !=nullptr){
+        curr=curr->next;
+    }
+    return curr;
+}
+
+bool searchInLL(Node* head, int key){
+    Node* temp=head;
+    while (temp)
+    {
+        if(temp->data == key){
+            return true;
+        }
+        temp=temp->next;
+    }
+    return false;
+}
+
 int main(){
     int n=0;
     cout << "Enter the no of nodes you want to have in the linked list: "<< endl;
@@ -35,20 +65,25 @@ int main(){
     }
 
     Node* head= convertArraytoLL(temporary);
-    // Node* curr =head;
-    // for (int i = 1; i < n; i++)
-    // {
-    //     int temp_val;
-    //     cout << "Enter the value to be inserted: "<< endl;
-    //     cin >> temp_val;
-    //     Node* temp= new Node(temp_val);
-    //     curr->next=temp;
-    //     curr=temp;
-    // }
-    Node* ptr=head;
-    while(ptr!=nullptr){
-        cout << ptr->data << " ";
-        ptr=ptr->next;
+
+    // cout << "Length of linked list is: " << length_LL(head) << endl;
+
+    // cout << "The last element of linked list is: " << last_element(head)->data << endl;
+
+    int temp;
+    cout<< "Enter the element to search in the LL:";
+    cin>>temp;
+    if(searchInLL(head,temp)){
+        cout<< "Yes element is present";
     }
+    else{
+        cout<<"Element not present";
+    }
+    
+    // Node* ptr=head;
+    // while(ptr!=nullptr){
+    //     cout << ptr->data << " ";
+    //     ptr=ptr->next;
+    // }
     return 0;
 }
