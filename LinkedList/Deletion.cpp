@@ -90,6 +90,19 @@ Node* deleteAtPos(Node* head, int pos) {
     return head;
 }
 
+Node* deleteTheVal(Node* head, int val) {
+    if (!head) return head;
+    Node* curr = head;
+    Node* prev = nullptr;
+    while(curr->data!=val && curr->next !=nullptr){
+        prev=curr;
+        curr=curr->next;
+    }
+    prev->next=curr->next;
+    delete curr;
+    return head;
+}
+
 // Print linked list
 void printLL(Node* head) {
     while (head) {
@@ -112,14 +125,20 @@ int main() {
 
     Node* head = convertArraytoLL(arr);
 
-    int pos;
-    cout << "Enter position to delete: ";
-    cin >> pos;
+    // int pos;
+    // cout << "Enter position to delete: ";
+    // cin >> pos;
+
+    int val;
+    cout << "Enter the val to delete: ";
+    cin >> val;
 
     cout << "Linked list before deletion:\n";
     printLL(head);
 
-    head = deleteAtPos(head, pos);
+    // head = deleteAtPos(head, pos);
+
+    head= deleteTheVal(head,val);
 
     cout << "Linked list after deletion:\n";
     printLL(head);
